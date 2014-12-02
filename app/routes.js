@@ -1,3 +1,5 @@
+var path = require('path');
+
 // Grab models here
 var Nerd = require('./models/nerd');
 
@@ -25,6 +27,6 @@ module.exports = function(app) {
 
   // Angular will handle all front-end routes, SPA-style. Just send it there.
   app.get('*', function(req, res) {
-    res.sendFile('./public/views/index.html');
+    res.sendFile('index.html', { root: path.join(__dirname, '../public') });
   });
 };

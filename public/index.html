@@ -15,17 +15,17 @@
   <script src="libs/angular-route/angular-route.min.js"></script>
 
   <!-- ANGULAR CUSTOM -->
-  <script src="dashboard/js/dashboard.ctrl.js"></script>
   <script src="dashboard/js/dashboard.module.js"></script>
-
+  <script src="dashboard/js/dashboard.ctrl.js"></script>
+  
+  <script src="nerds/js/nerds.module.js"></script>
   <script src="nerds/js/nerds.ctrl.js"></script>
   <script src="nerds/js/nerds.service.js"></script>
-  <script src="nerds/js/nerds.module.js"></script>
-
+  
   <script src="appRoutes.js"></script>
   <script src="app.js"></script>
 </head>
-<body ng-app="sampleApp" ng-controller="NerdController">
+<body ng-app="mainApp" ng-controller="NerdController as nerd">
 <div class="container">
 
     <!-- HEADER -->

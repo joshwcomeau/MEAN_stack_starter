@@ -10,7 +10,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
     .when('/nerds', {
       templateUrl:  '/nerds/views/nerds.index.html',
       controller:   'NerdController'
-    });
+    })
     
     // GET :show
     .when('/nerds/:id', {
