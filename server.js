@@ -4,6 +4,7 @@ var express         = require('express'),
     bodyParser      = require('body-parser'),
     methodOverride  = require('method-override');
 
+
 // Configuration ====================================================
 var db    = require("./config/db"),
     port  = process.env.PORT || 8080;
@@ -21,3 +22,15 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 // turns paths like /img into /public/img
 app.use(express.static(__dirname + '/public'));     
+
+
+// routes ===========================================================
+require('./app/routes')(app);
+
+
+// start app ========================================================
+app.listen(port);
+console.log('Green for go on port ' + port);
+
+// Exposes our app
+exports = module.exports = app;
