@@ -1,0 +1,18 @@
+{
+  "name": "MEAN_stack_starter",
+  "version": "1.0.0",
+  "description": "Change me!",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.10.4",
+    "mongoose" : "~3.8.20",
+    "body-parser" : "~1.9.3",
+    "method-override" : "~2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshwcomeau/MEAN_stack_starter.git"
+  },
+  "author": "Joshua Comeau",
+  "license": "MIT"
+}
