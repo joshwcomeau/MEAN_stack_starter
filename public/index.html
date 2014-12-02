@@ -1,15 +1,48 @@
+<!-- public/index.html -->
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <base href="/">
 
-    <title>Starter MEAN Single Page Application</title>
+  <title>MEAN stack template</title>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+
+  <!-- JS -->
+  <script src="libs/angular/angular.min.js"></script>
+  <script src="libs/angular-route/angular-route.min.js"></script>
+
+  <!-- ANGULAR CUSTOM -->
+  <script src="dashboard/js/dashboard.ctrl.js"></script>
+  <script src="dashboard/js/dashboard.module.js"></script>
+
+  <script src="nerds/js/nerds.ctrl.js"></script>
+  <script src="nerds/js/nerds.service.js"></script>
+  <script src="nerds/js/nerds.module.js"></script>
+
+  <script src="appRoutes.js"></script>
+  <script src="app.js"></script>
 </head>
-<body>
+<body ng-app="sampleApp" ng-controller="NerdController">
+<div class="container">
 
-  <h1>Woohoo!</h1>
-  <p>We've got a running, working Node server!</p>
+    <!-- HEADER -->
+    <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Stencil: Node and Angular</a>
+        </div>
 
+        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
+        <ul class="nav navbar-nav">
+            <li><a href="/nerds">Nerds</a></li>
+        </ul>
+    </nav>
+
+    <!-- ANGULAR DYNAMIC CONTENT -->
+    <div ng-view></div>
+
+</div>
 </body>
 </html>
