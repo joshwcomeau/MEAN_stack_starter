@@ -1,5 +1,5 @@
 var gulp          = require('gulp'),
-    sass          = require('gulp-ruby-sass'),
+    sass          = require('gulp-sass'),
     autoprefixer  = require('gulp-autoprefixer'),
     minifycss     = require('gulp-minify-css'),
     jshint        = require('gulp-jshint'),
@@ -27,17 +27,13 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('styles', function() {
-  return gulp.src('public/assets/css/*.scss')
+  return gulp.src('./public/assets/css/*.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass({ style: 'expanded' }))
-    .pipe(sourcemaps.write("./"))    
-    
-    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
-    // Throw our production version
-    .pipe(concat('style.css'))
-    .pipe(gulp.dest('public/assets/css/'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(minifycss())
+      .pipe(sass())
+      .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
+      .pipe(minifycss())
+      .pipe(concat('style.min.css'))
+    .pipe(sourcemaps.write('./'))    
     .pipe(gulp.dest('public/assets/css/'))
     .pipe(notify({ message: 'Styles task complete' }));
 });
