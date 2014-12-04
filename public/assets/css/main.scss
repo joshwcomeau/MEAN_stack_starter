@@ -1,0 +1,11 @@
+/* Put all global, site-wide SCSS here */
+/* Model-specific CSS should go into its own SCSS file. */
+
+.navbar {
+  background: #CCC;
+  display: flex;
+  transform: rotate(7deg);
+}
+.navbar h2 {
+  border-radius: 10px;
+}
