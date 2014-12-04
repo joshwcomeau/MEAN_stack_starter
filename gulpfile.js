@@ -19,7 +19,7 @@ var gulp          = require('gulp'),
 // }
 
 gulp.task('default', function() {
-    gulp.start('styles', 'scripts');
+    gulp.start('styles', 'scripts', 'watch');
 });
 
 gulp.task('clean', function(cb) {
@@ -27,7 +27,7 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('styles', function() {
-  return gulp.src('./public/assets/css/*.scss')
+  return gulp.src('public/**/*.scss')
     .pipe(sourcemaps.init())
       .pipe(sass())
       .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
@@ -40,15 +40,18 @@ gulp.task('styles', function() {
 
 
 gulp.task('scripts', function() {
-  return gulp.src('public/assets/js/*.js')
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest('public/assets/js'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
+  return gulp.src(['public/**/*.module.js', 'public/app.routes.js', 'public/app.js', 'public/components/**/*.js'])
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(sourcemaps.init())
+      .pipe(concat('main.min.js'))
+      .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/assets/js'))
     .pipe(notify({ message: 'Scripts task complete' }));
 });
 
-// gulp.task('watch', function() {
-//   gulp.watch('')
-// });
+gulp.task('watch', ['styles', 'scripts'], function() {
+  gulp.watch('public/**/*.js', ['scripts']);
+  gulp.watch('public/**/*.scss', ['styles']);
+});

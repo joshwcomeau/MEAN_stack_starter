@@ -1,20 +1,20 @@
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
-      templateUrl:  '/dashboard/views/dashboard.index.html',
+      templateUrl:  '/components/dashboard/views/dashboard.index.html',
       controller:   'DashboardController'
     })
 
     // NERDS ===================================================================
     // GET :index
     .when('/nerds', {
-      templateUrl:  '/nerds/views/nerds.index.html',
+      templateUrl:  '/components/nerds/views/nerds.index.html',
       controller:   'NerdController'
     })
     
     // GET :show
     .when('/nerds/:id', {
-      templateUrl:  '/nerds/views/nerds.show.html',
+      templateUrl:  '/components/nerds/views/nerds.show.html',
       controller:   'NerdController'
     });
 
