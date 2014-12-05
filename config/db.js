@@ -1,3 +1,3 @@
 module.exports = {
-  url: 'mongodb://localhost/change-me'
+  url: 'mongodb://localhost/MEAN_stack'
 }
