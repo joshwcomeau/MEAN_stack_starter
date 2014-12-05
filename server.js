@@ -2,15 +2,15 @@
 var express         = require('express'),
     app             = express(),
     bodyParser      = require('body-parser'),
-    methodOverride  = require('method-override');
+    methodOverride  = require('method-override'),
+    mongoose        = require('mongoose');
 
 
 // Configuration ====================================================
 var db    = require("./config/db"),
-    port  = process.env.PORT || 8080;
+    port  = process.env.PORT || 3000;
 
-// Uncomment me after entering credentials in config/db.js
-// mongoose.connect(db.url);  
+mongoose.connect(db.url);  
 
 // BodyParser lets us use POST parameters as JS objects.
 app.use(bodyParser.json());   
