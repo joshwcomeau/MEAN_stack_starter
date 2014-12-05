@@ -7,13 +7,14 @@ var mongoose  = require("mongoose"),
 //tell Mongoose to use our test DB
 mongoose.connect(dbUri);  
 
-describe("Nerd", function(){  
+describe("Thing", function(){  
   var currentNerd = null;  
 
   beforeEach(function(done){    
     //add some test data   
     var sheldon = new Nerd({ name: 'Sheldon' }); 
     sheldon.save(function(err, sheldon) {
+      if (err) return console.error(err);
       currentNerd = sheldon;      
       done();    
     });
@@ -25,21 +26,9 @@ describe("Nerd", function(){
     });  
   });
 
-  // it("registers a new customer", function(done){    
-  //   customer.register("test2@test.com", "password", "password", function(doc){      
-  //     doc.email.should.equal("test2@test.com");      
-  //     doc.crypted_password.should.not.equal("password");      
-  //     done();    
-  //   }, function(message){      
-  //     message.should.equal(null);      
-  //     done();    
-  //   }); 
-  // }); 
-
-
-
   it("count is equal to one", function(done){   
     Nerd.count({}, function(err, c) {
+      if (err) return console.error(err);
       expect(c).to.equal(1);
       done();
     })
@@ -47,13 +36,9 @@ describe("Nerd", function(){
 
   it("can be found by name", function(done){    
     Nerd.findOne({ name: currentNerd.name }, function(err, nerd) {
+      if (err) return console.error(err);
       expect(nerd.name).to.equal(currentNerd.name);
       done();
     });
-
-    // Nerd.findByName(currentNerd.name, function(doc){      
-    //   doc.email.should.equal("test@test.com");       
-    //   done();    
-    // });  
   });  
 });
