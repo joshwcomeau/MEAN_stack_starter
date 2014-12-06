@@ -28,33 +28,43 @@ describe('Server-side routes', function(){
     Nerd.remove({}, function() {      
       done();    
     });  
-  })
+  });
 
   describe('GET /api/nerds', function() {
-    it('respond with json', function(done){
+    it('respond with all our nerds', function(done){
       request(app)
         .get('/api/nerds')
         .expect('Content-Type', /json/)
         .expect(200)
-        .expect(correctIndexContents)
+        .expect(function(res) {
+          if ( res.body.constructor !== Array )   
+            throw new Error("Constructor was expected to be Array, but was " + res.body.constructor);
+          if ( res.body.length !== 1)                   
+            throw new Error("Array length expected to be 1, but was " + res.body.length);
+          if ( typeof res.body[0] !== 'object' )      
+            throw new Error("First element expected to be an object, but was " + typeof res.body[0]); 
+          if ( res.body[0].name !== seed_data.name )     
+            throw new Error("First name expected to be " + seed_data.name + ", but was " + res.body[0].name)
+        })
         .end(done);
     });
   });
 
   describe('POST /api/nerds', function() {
-    it('')
+    it('posts and persists a new nerd', function(done) {
+      request(app)
+        .post('/api/nerds')
+        .send({ name: 'Thomas' })
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .expect(function(res) {
+          console.log(res.body)
+        })
+        .end(done);
+    });
   });
 
   function correctIndexContents(res) {
-    console.log(res.body);
-    if ( res.body.constructor !== Array )   
-      throw new Error("Constructor was expected to be Array, but was " + res.body.constructor);
-    if ( res.body.length < 1)                   
-      throw new Error("Array length expected to be 1, but was " + res.body.length);
-    if ( typeof res.body[0] !== 'object' )      
-      throw new Error("First element expected to be an object, but was " + typeof res.body[0]); 
-    if ( res.body[0].name !== seed_data.name )     
-      throw new Error("First name expected to be " + seed_data.name + ", but was " + res.body[0].name)
   }
 });
 

@@ -21,17 +21,14 @@ module.exports = function(app) {
     });
   });
 
-  app.post('/api/things', function(req, res) {
+  app.post('/api/nerds', function(req, res) {
     console.log("POST /api/nerds");
     
-    var nerd = new Nerd({
-      name: req.body.name
-    });
+    var nerd = new Nerd();
+    nerd.name = req.name;
 
     nerd.save(function (err) {
-      if (!err) {
-        return console.log("created");
-      } else {
+      if (err) {
         return console.log(err);
       }
     });
