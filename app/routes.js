@@ -44,6 +44,7 @@ module.exports = function(app) {
 
   // Angular will handle all front-end routes, SPA-style. Just send it there.
   app.get('*', function(req, res) {
+    console.log(__dirname);
     res.sendFile('index.html', { root: path.join(__dirname, '../public') });
   });
 };
