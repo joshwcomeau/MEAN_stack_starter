@@ -10,17 +10,34 @@ module.exports = function(app) {
 
   // GET: INDEX
   app.get('/api/nerds', function(req, res) {
+    console.log("GET /api/nerds");
     Nerd.find(function(err, nerds) {
       
       // Nothing after 'res.send(err)' executes. It returns.
       if (err)
-        res.send(err);
+        res.json(err);
 
       res.json(nerds);
     });
   });
 
-  // Next up: Put app.post, app.delete, etc.
+  app.post('/api/things', function(req, res) {
+    console.log("POST /api/nerds");
+    
+    var nerd = new Nerd({
+      name: req.body.name
+    });
+
+    nerd.save(function (err) {
+      if (!err) {
+        return console.log("created");
+      } else {
+        return console.log(err);
+      }
+    });
+
+    return res.json(nerd);
+  });
 
 
   // Client routes =========================================

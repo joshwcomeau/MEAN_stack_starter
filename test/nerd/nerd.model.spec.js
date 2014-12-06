@@ -7,7 +7,7 @@ var mongoose  = require("mongoose"),
 //tell Mongoose to use our test DB
 mongoose.connect(dbUri);  
 
-describe("Thing", function(){  
+describe("Nerd", function(){  
   var currentNerd = null;  
 
   beforeEach(function(done){    
