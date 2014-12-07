@@ -1,13 +1,13 @@
 var request   = require('supertest'),
     mongoose  = require('mongoose'),
-    Thing     = require("../../app/models/thing"),    
+    Thing     = require("../../../app/models/thing"),    
     express   = require('express'),
     dbUri     = 'mongodb://localhost/MEAN_stack_test',
     app       = express();
 
 
 // Load up our routes
-require('../../app/routes')(app);
+require('../../../app/routes')(app);
 
 
 describe('Server-side routes', function(){
@@ -26,6 +26,7 @@ describe('Server-side routes', function(){
 
   after(function(done) {
     Thing.remove({}, function() {      
+      mongoose.disconnect();
       done();    
     });  
   });

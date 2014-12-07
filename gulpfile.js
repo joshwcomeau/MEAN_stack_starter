@@ -37,8 +37,8 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
   return gulp.src(['public/**/*.module.js', 'public/app.routes.js', 'public/app.js', 'public/components/**/*.js', 'public/shared/**/*.js'])
-    // .pipe(jshint())
-    // .pipe(jshint.reporter('default'))
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
     .pipe(sourcemaps.init())
       .pipe(concat('main.min.js'))
       .pipe(uglify())

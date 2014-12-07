@@ -1,16 +1,15 @@
 var mongoose  = require("mongoose"),
     dbUri     = 'mongodb://localhost/MEAN_stack_test',
-    Thing      = require("../../app/models/thing"),
+    Thing      = require("../../../app/models/thing"),
     chai      = require("chai"),
     expect    = chai.expect;
-
-//tell Mongoose to use our test DB
-mongoose.connect(dbUri);  
 
 describe("Thing", function(){  
   var currentThing = null;  
 
-  beforeEach(function(done){    
+
+  before(function(done){    
+    mongoose.connect(dbUri);      
     //add some test data   
     var table = new Thing({ name: 'Table' }); 
     table.save(function(err, table) {
@@ -20,8 +19,9 @@ describe("Thing", function(){
     });
   });  
 
-  afterEach(function(done){    
-    Thing.remove({}, function() {      
+  after(function(done){    
+    Thing.remove({}, function() {    
+      mongoose.disconnect();
       done();    
     });  
   });
