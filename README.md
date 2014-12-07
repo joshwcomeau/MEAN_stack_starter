@@ -3,17 +3,12 @@ MEAN_stack_starter
 
 A ready-to-go initialized stack, featuring:
 
-`* Base stack:    MEAN (Mongo, Express, Angular, Node)`
-
-`* ORM:             Mongoose`
-
-`* Package Manager: Bower and NPM`
-
-`* Preprocessors:   SASS`
-
-`* Task running:    Gulp`
-
-`* Testing:         Mocha, Chai, Supertest`
+* ` Base stack:      MEAN (Mongo, Express, Angular, Node)`  
+* ` ORM:             Mongoose`  
+* ` Package Manager: Bower and NPM`  
+* ` Preprocessors:   SASS`  
+* ` Task running:    Gulp`  
+* ` Testing:         Mocha, Chai, Supertest`  
 
 ###Follow along!
 You can follow my progress with this series of blog posts, "Let's Play" style:
