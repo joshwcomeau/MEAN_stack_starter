@@ -1,37 +1,36 @@
 MEAN_stack_starter
 ==================
 
-A ready-to-go initialized set of MEAN + SASS + Bower + Gulp + CSS Normalize.
+A ready-to-go initialized stack, featuring:
 
-<h2>File Structure</h2>
+`* Base stack:    MEAN (Mongo, Express, Angular, Node)`
 
-I've decided to go with a modularized, by-the-function style of file organization. Looks something like this:
+`* ORM:             Mongoose`
 
-public/
--- shared/                  // acts as reusable components or partials of our site
--- components/              // each component is treated as a mini Angular app
----- nerds/
------- views/
--------- nerds.index.html
--------- nerds.show.html
------- nerds.ctrl.js
------- nerds.module.js
------- nerds.service.js
--- assets/
----- img/                   // Images and icons for your app
----- css/                   // All styles and style related files (SCSS or LESS files)
----- js/                    // JavaScript files written for your app that are not for angular
----- libs/                  // Third-party libraries such as jQuery, Moment, Underscore, etc.
--- app.js
--- app.routes.js
--- index.html
+`* Package Manager: Bower and NPM`
 
+`* Preprocessors:   SASS`
 
-<h2>In order to use me, update:</h2>
+`* Task running:    Gulp`
 
--> Package.json with the new app name/description.
--> Config/db.js with proper DB name and credentials
--> Our model name from 'Nerd' in app/models
--> Our /public/nerds folder and its files to reflect whatever model you want.
--> The back-end routes in /app/routes.js
--> The front-end routes in /public/appRoutes.js
+`* Testing:         Mocha, Chai, Supertest`
+
+###Follow along!
+You can follow my progress with this series of blog posts, "Let's Play" style:
+
+1. [Introduction, overview and packages](https://medium.com/@joshuawcomeau/feelin-mean-8bd942df37d3)
+2. [Directory structure and Node configuration](https://medium.com/@joshuawcomeau/lets-play-mean-496eeba8b33)
+3. Back-end model and route testing (coming soon!)
+4. Angular Adventure (coming soon!)
+5. Front-end testing (coming soon!)
+6. Preprocessing with Gulp (coming soon!)  
+
+###To customize...
+
+After you've cloned or forked this repo, you'll need to change the following stuff to match your project:
+
+* Package.json and bower.json with the new app name/description.
+* Config/db.js with proper DB name and credentials
+* Server-side routes in app/routes.js
+* Client-side routes in public/app.routes.js
+* Model names: Change everything you need to in app/models/ and public/components/
