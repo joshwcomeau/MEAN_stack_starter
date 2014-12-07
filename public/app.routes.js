@@ -1,21 +1,24 @@
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
-      templateUrl:  '/components/dashboard/views/dashboard.index.html',
-      controller:   'DashboardController'
+      templateUrl:  '/components/dashboard/dashboard.index.html',
+      controller:   'DashboardController',
+      controllerAs: 'dash'
     })
 
-    // NERDS ===================================================================
+    // THINGS ===================================================================
     // GET :index
-    .when('/nerds', {
-      templateUrl:  '/components/nerds/views/nerds.index.html',
-      controller:   'NerdController'
+    .when('/things', {
+      templateUrl:  '/components/things/things.index.html',
+      controller:   'ThingController',
+      controllerAs: 'thing'
     })
     
     // GET :show
-    .when('/nerds/:id', {
-      templateUrl:  '/components/nerds/views/nerds.show.html',
-      controller:   'NerdController'
+    .when('/things/:id', {
+      templateUrl:  '/components/things/things.show.html',
+      controller:   'ThingController',
+      controllerAs: 'thing'
     });
 
 

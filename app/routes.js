@@ -1,7 +1,7 @@
 var path = require('path');
 
 // Grab models here
-var Nerd = require('./models/nerd');
+var Thing = require('./models/thing');
 
 
 module.exports = function(app) {
@@ -9,31 +9,31 @@ module.exports = function(app) {
   // Handles things like API calls and authentication
 
   // GET: INDEX
-  app.get('/api/nerds', function(req, res) {
-    console.log("GET /api/nerds");
-    Nerd.find(function(err, nerds) {
+  app.get('/api/things', function(req, res) {
+    console.log("GET /api/things");
+    Thing.find(function(err, things) {
       
       // Nothing after 'res.send(err)' executes. It returns.
       if (err)
         res.json(err);
 
-      res.json(nerds);
+      res.json(things);
     });
   });
 
-  app.post('/api/nerds', function(req, res) {
-    console.log("POST /api/nerds");
+  app.post('/api/things', function(req, res) {
+    console.log("POST /api/things");
     
-    var nerd = new Nerd();
-    nerd.name = req.name;
+    var thing = new Thing();
+    thing.name = req.name;
 
-    nerd.save(function (err) {
+    thing.save(function (err) {
       if (err) {
         return console.log(err);
       }
     });
 
-    return res.json(nerd);
+    return res.json(thing);
   });
 
 

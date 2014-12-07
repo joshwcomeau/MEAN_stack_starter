@@ -1,6 +1,6 @@
 var request   = require('supertest'),
     mongoose  = require('mongoose'),
-    Nerd      = require("../../app/models/nerd"),    
+    Thing     = require("../../app/models/thing"),    
     express   = require('express'),
     dbUri     = 'mongodb://localhost/MEAN_stack_test',
     app       = express();
@@ -16,7 +16,7 @@ describe('Server-side routes', function(){
   before(function(done) {
     mongoose.connect(dbUri);  
     mongoose.connection.on('open', function() {
-      seed_data = new Nerd({ name: 'James' });
+      seed_data = new Thing({ name: 'Table' });
       seed_data.save(function(err, data) {
         if (err) return console.error(err);     
         done();    
@@ -25,15 +25,15 @@ describe('Server-side routes', function(){
   });
 
   after(function(done) {
-    Nerd.remove({}, function() {      
+    Thing.remove({}, function() {      
       done();    
     });  
   });
 
-  describe('GET /api/nerds', function() {
-    it('respond with all our nerds', function(done){
+  describe('GET /api/things', function() {
+    it('respond with all our things', function(done){
       request(app)
-        .get('/api/nerds')
+        .get('/api/things')
         .expect('Content-Type', /json/)
         .expect(200)
         .expect(function(res) {
@@ -50,22 +50,25 @@ describe('Server-side routes', function(){
     });
   });
 
-  describe('POST /api/nerds', function() {
-    it('posts and persists a new nerd', function(done) {
+  describe('POST /api/things', function() {
+    it('posts and persists a new thing', function(done) {
+      var new_name = 'Umbrella';
       request(app)
-        .post('/api/nerds')
-        .send({ name: 'Thomas' })
+        .post('/api/things')
+        .send({ name: new_name })
         .expect('Content-Type', /json/)
         .expect(200)
         .expect(function(res) {
-          console.log(res.body)
+          Thing.find({ name: seed_data.name }, function(err, data) {
+            if (err)
+              throw new Error("Error: " + err);
+            if (!data)
+              throw new Error("Query didn't find any record with name of " + new_name);
+          });
         })
         .end(done);
     });
   });
-
-  function correctIndexContents(res) {
-  }
 });
 
 
