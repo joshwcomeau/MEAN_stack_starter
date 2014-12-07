@@ -31,4 +31,4 @@ node_modules
 .sass-cache
 
 # Stupid Mac files
-**/.DS_Store
+.DS_Store
