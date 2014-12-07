@@ -13,7 +13,7 @@ var gulp          = require('gulp'),
     sourcemaps    = require('gulp-sourcemaps');
 
 function errorLog (error) {
-  console.error.bind(error);
+  console.error(error.message); 
   this.emit('end');
 }
 
@@ -22,11 +22,12 @@ gulp.task('default', function() {
 });
 
 gulp.task('styles', function() {
-  return gulp.src('public/**/*.scss')
-    .pipe(sass({sourcemap: true}))
-    .on('error', errorLog)
-    .pipe(sourcemaps.init({loadMaps: true}))
+  return gulp.src('public/assets/css/*.scss')
+    .pipe(sourcemaps.init())
+      .pipe(sass())
+      .on('error', errorLog)
       .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1'))
+      .pipe(minifycss())
       .pipe(concat('style.min.css'))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('public/assets/css/'))
@@ -36,8 +37,8 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
   return gulp.src(['public/**/*.module.js', 'public/app.routes.js', 'public/app.js', 'public/components/**/*.js', 'public/shared/**/*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
+    // .pipe(jshint())
+    // .pipe(jshint.reporter('default'))
     .pipe(sourcemaps.init())
       .pipe(concat('main.min.js'))
       .pipe(uglify())
