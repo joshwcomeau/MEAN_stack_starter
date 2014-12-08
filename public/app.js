@@ -1,1 +1,1 @@
-angular.module('mainApp', ['ngRoute', 'appRoutes', 'mainApp.things', 'mainApp.dashboard']);
+angular.module('mainApp', ['ngRoute', 'ngResource', 'appRoutes', 'mainApp.things', 'mainApp.dashboard']);
