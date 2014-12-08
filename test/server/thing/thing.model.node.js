@@ -1,6 +1,6 @@
 var mongoose  = require("mongoose"),
     dbUri     = 'mongodb://localhost/MEAN_stack_test',
-    Thing      = require("../../../app/models/thing"),
+    Thing      = requireFromRoot("app/models/thing"),
     chai      = require("chai"),
     expect    = chai.expect;
 

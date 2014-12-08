@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override'));  
 
 // turns paths like /img into /public/img
-app.use(express.static(__dirname + '/public'));     
+app.use(express.static(__dirname + '/public'));   
 
 
 // routes ===========================================================
