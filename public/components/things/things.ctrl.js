@@ -1,5 +1,5 @@
 function ThingController($scope) {
-  this.tagline = "I'm such a Thing."
+  this.tagline = "I'm such a Thing.";
 }
 
 ThingController.prototype.someMethod = function() {};

@@ -4,6 +4,7 @@
     "font-awesome":   "latest",
     "animate.css":    "latest",
     "angular":        "~1.3.0",
-    "angular-route":  "~1.3.0"   
+    "angular-route":  "~1.3.0",
+    "angular-mocks":  "~1.3.0"   
   }
 }
