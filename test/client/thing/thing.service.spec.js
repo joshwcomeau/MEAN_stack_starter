@@ -16,6 +16,7 @@ describe("Thing service", function() {
     httpBackend.flush();
     console.log(things);
     expect(things[0].name).to.equal(mockResponse[0].name);
+    expect(things[0] instanceof thingService).to.equal(true);
   });
 
 
