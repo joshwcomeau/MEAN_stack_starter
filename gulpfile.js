@@ -31,6 +31,7 @@ gulp.task('styles', function() {
       .pipe(concat('style.min.css'))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('public/assets/css/'))
+    .pipe(livereload())
     .pipe(notify({ message: 'Styles task complete' }));
 });
 

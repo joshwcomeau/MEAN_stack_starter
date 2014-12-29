@@ -1,8 +1,10 @@
 /* Put all global, site-wide SCSS here */
 /* Model-specific CSS should go into its own SCSS file. */
-
+body {
+  background: #000;
+}
 .navbar {
-  background: #CCC
+  background: #CCC;
   
   transform: rotate(-1deg);
   margin-top: 10px;
