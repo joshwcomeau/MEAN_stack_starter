@@ -1,4 +1,10 @@
 <div>
+  <div ng-include="'components/things/things.new.html'"></div>
+
   <h1>Things Index!</h1>
-  <p>{{thing.tagline}}</p>
+  <ul>
+    <li class="thing" ng-repeat="t in thing.things">
+      {{t.name}}
+    </li>
+  </ul>
 </div>

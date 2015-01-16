@@ -24,8 +24,11 @@ module.exports = function(app) {
   app.post('/api/things', function(req, res) {
     console.log("POST /api/things");
     
-    var thing = new Thing();
-    thing.name = req.name;
+    var thing = new Thing({
+      name: req.body.name
+    });
+    
+    console.log(req.body);
 
     thing.save(function (err) {
       if (err) {
